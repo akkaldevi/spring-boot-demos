@@ -1,0 +1,23 @@
+---
+spring:
+  profiles: development
+messages:
+  welcomeMsg: Hi, from Development Env
+
+---
+spring:
+  profiles: ci
+messages:
+  welcomeMsg: Hi, from CI Env
+
+---
+spring:
+  profiles: e2e
+messages:
+  welcomeMsg: Hi, from E2E
+
+---
+spring:
+  profiles: production
+messages:
+  welcomeMsg: Hi, from Production Env

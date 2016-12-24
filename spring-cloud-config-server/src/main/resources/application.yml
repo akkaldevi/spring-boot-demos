@@ -1,0 +1,10 @@
+server:
+  context-path: /spring-cloud-config-server
+  port: 9090
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/akkaldevi/spring-cloud-config-repo/
