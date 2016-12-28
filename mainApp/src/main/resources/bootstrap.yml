@@ -1,0 +1,18 @@
+
+spring:
+  profiles: development
+  cloud:
+    config:
+      name: demo-messages
+      # uri: http://localhost:9090/spring-cloud-config-server
+      #instead export the env prop as: < export SPRING_CLOUD_CONFIG_URI=http://localhost:9090/spring-cloud-config-server >
+      failFast: false
+---
+spring:
+  profiles: ci,e2e,production
+  cloud:
+    config:
+      name: demo-messages
+      # uri: http://localhost:9090/spring-cloud-config-server
+      #instead export the env prop as: < export SPRING_CLOUD_CONFIG_URI=http://localhost:9090/spring-cloud-config-server >
+      failFast: true

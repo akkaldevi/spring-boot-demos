@@ -7,4 +7,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/akkaldevi/spring-boot-demos/tree/master/spring-cloud-config-repo/
+          uri: https://github.com/akkaldevi/spring-boot-demos/
+          search-paths: spring-cloud-config-repo

@@ -1,0 +1,63 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'mainApp'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.cloud:spring-cloud-starter-config')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.BUILD-SNAPSHOT"
+	}
+}
+
+// below code is needed to read gradle command-line args
+def getJvmArgs(){
+
+    def applicationDefaultJvmArgs = []
+    def activeProfile =  "${project.gradle.startParameter.systemPropertiesArgs['spring.profiles.active']}"
+
+    if(activeProfile != "null"){
+        applicationDefaultJvmArgs.push("-Dspring.profiles.active=${activeProfile}");
+    }
+    return applicationDefaultJvmArgs;
+}
+
+project.ext {
+    applicationDefaultJvmArgs = getJvmArgs()
+}
+
+//Lets command-line -P properties override the above
+gradle.startParameter.getProjectProperties().each { property, value ->
+    project.ext[property] = value
+}
