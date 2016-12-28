@@ -2,7 +2,7 @@
 spring:
   profiles: development
 messages:
-  welcomeMsg: Hi, from Development Env-v1
+  welcomeMsg: Hi, from Development Env
 
 ---
 spring:
@@ -14,7 +14,7 @@ messages:
 spring:
   profiles: e2e
 messages:
-  welcomeMsg: Hi, from E2E
+  welcomeMsg: Hi, from E2E - v1
 
 ---
 spring:
