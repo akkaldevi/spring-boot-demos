@@ -2,7 +2,7 @@
 spring:
   profiles: development
 messages:
-  welcomeMsg: Hi, from Development Env - V2
+  welcomeMsg: Hi, from Development Env
 
 ---
 spring:
